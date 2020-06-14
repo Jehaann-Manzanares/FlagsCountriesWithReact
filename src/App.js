@@ -4,28 +4,26 @@ import { createStore } from 'redux'
 
 import './App.css';
 import CountryList from './components/country/country-list'
-
+import ActionList from './components/actions/action-list'
+import reducer from './reducers/reducer'
 //const store = createStore( initalState, reducer, enhancer)
 
 const initalState = {
   countryList : [],
+  countryListByName:[],
+  coutryFilteredByRegion:[],
+  filterByRegion:'',
+
 }
 
-function reducer (state, action ) {
 
-  switch( action.type ){
-    case 'SET_COUNTRY_LIST' : {
-      return { ...state, countryList: action.payload }
-    }
-  }
-  return state
-}
 const store = createStore(  reducer, initalState)
 
 function App() {
   return (
     <Provider store = { store } >
       <div className="App">
+        <ActionList/>
         <CountryList/>
       </div>
     </Provider>
