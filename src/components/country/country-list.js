@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import styled from 'styled-components'
 import Country from './country'
 import Wrapper from '../wrapper'
@@ -9,9 +9,12 @@ import { useSelector, useDispatch } from 'react-redux'
 
 const CountryListStyled = styled.div`
     display:grid;
+    grid-row-gap:2.3em;
+    grid-column-gap:65px;
+    grid-auto-flow: columns;
+    grid-template-columns: repeat(auto-fill,262px);
     background: var(--gris);
     padding: 4em 2em;
-    grid-row-gap:2.3em;
     justify-content: center;
 `
 

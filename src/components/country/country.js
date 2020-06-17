@@ -1,12 +1,21 @@
 import React from 'react';
 import styled from 'styled-components';
 
+import {
+    useHistory,
+} from 'react-router-dom'
+
 const CountryStyled = styled.div`
-    width : 264px;
+    /*width : 264px;*/
     border-radius: 5px;
     box-shadow: 0 0 7px 2px rgba(0,0,0,.03);
     text-align: left;
     background:var(--white);
+    cursor:pointer;
+    transition: 1s ease;
+    &:hover {
+        transform: scale(1.05)
+    }
     img{
         width:100%;
         height:160px;
@@ -36,8 +45,12 @@ function Country ({
     region,
     capital,
 }) {
+    const history = useHistory()
+    const handleClick = () => {
+        history.push(`/country/${name}`)
+    }
     return (
-        <CountryStyled>
+        <CountryStyled onClick={handleClick}>
             <img loading='lazy' src={flag} alt=""/>
             <div className="details">
                 <h2>{name}</h2>
