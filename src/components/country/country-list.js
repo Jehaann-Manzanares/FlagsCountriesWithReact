@@ -62,12 +62,14 @@ function CountryList () {
                     countryList.map( ( {alpha2Code, flag, name, population, region, capital} )=> {
                         return (
                             <Country
+                                alpha2Code={alpha2Code}
                                 key={alpha2Code}
                                 flag = {flag}
                                 name = {name}
                                 population = {population}
                                 region = {region}
                                 capital= {capital}
+
                             ></Country>
                         )
                     })

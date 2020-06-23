@@ -38,15 +38,23 @@ function App() {
     setDarkMode(mq.matches)
     setChecked(mq.matches)
   }
+
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-color-scheme: dark)')
+    mq.addListener(changeMedia)
+    setDarkMode(mq.matches)
+    setChecked(mq.matches)
+    return () => {
+      mq.removeListener(changeMedia)
+    }
+  }, [])
   return (
       <main className={mainClass}>
         <Provider store = { store } >
           <Router>
             <Header setDarkMode = {setDarkMode} darkMode={darkMode}/>
             <Switch>
-              <Route path='/country/:id'>
-                <CountryPage/>
-              </Route>
+              <Route path='/country/:id' component={CountryPage}/>
               <Route path="/">
                 <ActionList/>
                 <CountryList/>
